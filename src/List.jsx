@@ -15,12 +15,7 @@ const List = (props) => {
               <button className='edit-btn' onClick={() => editItem(id)}>
                 Edit
               </button>
-              <button
-                className='delete-btn'
-                onClick={() => {
-                  removeItem(id)
-                }}
-              >
+              <button className='delete-btn' onClick={() => removeItem(id)}>
                 Delete
               </button>
             </div>

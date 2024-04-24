@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
 :root {
-  --clr-primary-400: hsl(235, 24%, 19%);
-  --clr-primary-500: hsl(235, 21%, 11%);
+  --clr-accent-400: #5677c1;
+  --clr-primary-400: #25273c;
+  --clr-primary-500: #161722;
 
-  --clr-neutral-300: hsl(236, 33%, 92%);
-  --clr-neutral-400: hsl(234, 39%, 85%);
-  --clr-neutral-600: hsl(234, 11%, 52%);
-  --clr-neutral-700: hsl(233, 14%, 35%);
-  --clr-neutral-800: hsl(237, 14%, 26%);
+  --clr-neutral-300: #e4e5f1;
+  --clr-neutral-400: #cacde8;
+  --clr-neutral-600: #777a92;
+  --clr-neutral-700: #4d5066;
+  --clr-neutral-800: #393a4c;
 
   --ff-primary: 'Josefin Sans', sans-serif;
 
@@ -16,9 +17,14 @@
   --ff-body: var(--ff-primary);
 
   --fw-regular: 400;
+  --fw-medium: 600;
   --fw-semibold: 700;
 
+  --fs-100: 14px;
+  --fs-200: 15px;
+  --fs-300: 16px;
   --fs-400: 18px;
+  --fs-900: 38px;
 }
 
 /* Box sizing rules */
@@ -56,8 +62,6 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  font-family: var(--ff-body);
-  font-size: var(--fs-400);
 }
 
 h1,
@@ -105,8 +109,10 @@ select {
 }
 
 body {
-  background-color: var(--clr-primary-500);
+  font-family: var(--ff-body);
+  font-size: var(--fs-400);
   color: var(--clr-neutral-300);
+  background-color: var(--clr-primary-500);
 }
 .container {
   width: 95%;
@@ -126,13 +132,13 @@ body {
   align-items: center;
 }
 .primary-header h1 {
-  color: var(--clr-neutral-300);
-  font-size: 38px;
+  font-size: var(--fs-900);
   font-weight: var(--fw-semibold);
   letter-spacing: 16px;
   text-transform: uppercase;
 }
 .theme-toggler-btn {
+  cursor: pointer;
   background: none;
   border: none;
 }
@@ -158,14 +164,18 @@ body {
 .todo:focus,
 .todo:active {
   border: none;
-  outline: 4px solid var(--clr-neutral-700);
+  outline: 4px solid var(--clr-accent-400);
 }
 .submit-btn {
-  font-size: 14px;
-  font-weight: 700;
   cursor: pointer;
-  background: none;
+
+  color: var(--clr-neutral-800);
+  font-size: var(--fs-300);
+  font-weight: 600;
+  letter-spacing: -0.7px;
   text-transform: capitalize;
+
+  background: none;
   border: none;
   height: 100%;
   padding: 1rem 1rem;
@@ -176,8 +186,11 @@ body {
 }
 
 .todo-container {
+  border-radius: 4px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
+  align-items: stretch;
 }
 
 .todo-item {
@@ -187,13 +200,19 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: transform 0.2s;
+  transition: all 0.2s;
 }
 .todo-item:hover {
-  transform: scale(1.01);
+  background-color: var(--clr-neutral-800);
 }
 .todo-item p {
+  font-size: 18px;
+  letter-spacing: -0.25px;
   flex-grow: 1;
+}
+.todo-item p.complete {
+  text-decoration: line-through;
+  color: var(--clr-neutral-500);
 }
 .btn-container {
   display: flex;
@@ -209,6 +228,9 @@ body {
   background: none;
   color: var(--clr-neutral-600);
   border: none;
+}
+.btn-container button {
+  font-weight: var(--fw-medium);
 }
 
 .todo-container-footer {

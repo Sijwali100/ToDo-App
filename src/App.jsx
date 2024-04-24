@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import List from './List'
+import { ToastContainer, toast } from 'react-toastify'
 
 // const list = [
 //   {
@@ -51,6 +52,7 @@ function App() {
 
   const handleClearList = () => {
     setTodos([])
+    toast.error('All ToDos Submitted!', { theme: 'dark', draggable: true })
   }
 
   const removeItem = (id) => {
@@ -59,7 +61,7 @@ function App() {
       return todo.id !== id
     })
     setTodos(newTodos)
-    console.log('removeItem' + id)
+    toast.error('ToDo Deleted!', { theme: 'dark', draggable: true })
     // setTodos(todos.filter((todo) => todo.id !== id))
   }
   const handleChange = (e) => {
@@ -69,7 +71,7 @@ function App() {
     e.preventDefault()
 
     if (!name) {
-      alert('Please write todo')
+      toast.warning('Please Enter ToDo', { theme: 'dark', draggable: true })
     } else if (name && isEditing) {
       const newTodosList = todos.map(function (todo) {
         if (todo.id === editId) {
@@ -80,6 +82,8 @@ function App() {
       setTodos(newTodosList)
       setEditId(null)
       setIsEditing(false)
+      setName('')
+      toast.success('ToDo Edited!', { theme: 'dark', draggable: true })
     } else {
       const newTodo = {
         id: new Date().getTime().toString(),
@@ -88,6 +92,7 @@ function App() {
       }
       setTodos([...todos, newTodo])
       setName('')
+      toast.success('ToDo Submitted!', { theme: 'dark', draggable: true })
     }
   }
 
@@ -102,9 +107,9 @@ function App() {
   // todo complete filter
   const handleFilter = (e) => {
     let btnClicked = e.target.textContent
-    if (btnClicked === 'all') {
-    } else if (btnClicked === 'active') {
-    } else if (btnClicked === 'completed') {
+    if (btnClicked === 'All') {
+    } else if (btnClicked === 'Active') {
+    } else if (btnClicked === 'Completed') {
     }
   }
 
@@ -124,7 +129,7 @@ function App() {
       </header>
 
       <main>
-        <ToastContainer theme='dark' />
+        <ToastContainer />
         <section>
           <div className='container'>
             <form className='todo-form' action='' onSubmit={handleSubmit}>
